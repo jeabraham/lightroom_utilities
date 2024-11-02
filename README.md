@@ -1,3 +1,7 @@
+# NOTE: WIP #
+
+** This is a WORK IN PROGRESS.  The "MovePhotosByDate" does not yet work!**
+
 # Duplicate Photo Management and Lightroom Collection Creation
 
 This project provides three utilities: 
@@ -7,7 +11,7 @@ Bash script that identifies duplicate photos in a specified directory
 structure, outputs `rm` commands to remove duplicates, and generates
 lists of files for further use. 
 
-2. **Lightroom Plugin PhotoCollectionCreator ** - A Lua
+2. **Lightroom Plugin PhotoCollectionCreator** - A Lua
 plugin for Adobe Lightroom Classic that creates a collection from a list
 of photo file paths.
 
@@ -15,7 +19,8 @@ of photo file paths.
 Lightroom that moves folders into date folders YYYY/YYYY-MM-DD, 
 the same pattern that Lightroom can apply when importing photos.  If you
 forget to organize them this way when you import them, you can use
-this plugin to do it later.  
+this plugin to do it later.  ***DOES NOT WORK YET*** look at
+`move_commands_to_date_folder.sh` for a shell-based alternative.
 
 # Requirements
 
