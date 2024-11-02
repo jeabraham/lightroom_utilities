@@ -1,9 +1,9 @@
 local LrDialogs = import 'LrDialogs'
 local LrApplication = import 'LrApplication'
 local LrTasks = import 'LrTasks'
-local LrFunctionContext = import 'LrFunctionContext'
 local LrFileUtils = import 'LrFileUtils'
-local LrPathUtils = import 'LrPathUtils'
+
+local catalog = LrApplication.activeCatalog()
 
 LrTasks.startAsyncTask(function()
 
@@ -31,7 +31,6 @@ LrTasks.startAsyncTask(function()
     end
 
     -- Create a new collection
-    local catalog = LrApplication.activeCatalog()
     catalog:withWriteAccessDo("Create Collection", function()
         local collectionSet = catalog:createCollection("Photos from File List", nil, true)
         
@@ -39,6 +38,15 @@ LrTasks.startAsyncTask(function()
         local missingPhotos = {}
         for _, path in ipairs(imagePaths) do
             local photo = catalog:findPhotoByPath(path)
+            if not photo then
+                -- If photo is not in catalog, import it
+                local importSuccess = catalog:addPhoto(path)
+                if importSuccess then
+                    photo = catalog:findPhotoByPath(path)
+                else
+                    LrDialogs.message("Failed to import: " .. path)
+                end
+            end
             if photo then
                 collectionSet:addPhotos({ photo })
             else
@@ -48,11 +56,10 @@ LrTasks.startAsyncTask(function()
 
         -- Show a message about completion
         if #missingPhotos > 0 then
-            LrDialogs.message("Collection created, but some photos were not found in the catalog.", table.concat(missingPhotos, "\n"))
+            LrDialogs.message("Collection created, but some photos were not found or failed to import.", table.concat(missingPhotos, "\n"))
         else
             LrDialogs.message("Collection created successfully!")
         end
     end)
-
 end)
 

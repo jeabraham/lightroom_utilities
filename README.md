@@ -1,15 +1,21 @@
 # Duplicate Photo Management and Lightroom Collection Creation
 
-This project provides two utilities: 
+This project provides three utilities: 
 
 1. **`find_duplicates.sh`** - A
 Bash script that identifies duplicate photos in a specified directory
 structure, outputs `rm` commands to remove duplicates, and generates
 lists of files for further use. 
 
-2. **Lightroom Lua Plugin** - A Lua
+2. **Lightroom Plugin PhotoCollectionCreator ** - A Lua
 plugin for Adobe Lightroom Classic that creates a collection from a list
 of photo file paths.
+
+3. **Lightroom Plugin MovePhotosByDate** - A plugin for 
+Lightroom that moves folders into date folders YYYY/YYYY-MM-DD, 
+the same pattern that Lightroom can apply when importing photos.  If you
+forget to organize them this way when you import them, you can use
+this plugin to do it later.  
 
 # Requirements
 
@@ -95,3 +101,13 @@ using the Lightroom menu item 'Remove Photos From Catalog'.
 
 You can then also move them on your hard drive or remove them by executing the `duplicate_removal_commands.sh` script.
 Note that you can also move the photos on your hard drive using Lightroom menu items or drag-and-drop sometimes.  
+
+** Step 4
+
+The other utilities are useful if you want to move or remove a bunch of duplicate
+files when the other copy is in a date-sorted folder YYYY/YYYY-MM-DD.  But, 
+if at the end of that, you still have a bunch of photos that 
+*weren't* duplicates, you can use the Lightroom Plugin MovePhotosByDate 
+to move the photos to the folder based on their EXIF date. 
+
+s
