@@ -78,9 +78,10 @@ paths in the selected text file.
 
 ## Step 3
 
-After you are happy, you can remove the photos from the Lightroom
-catalog using Lightroom menu item 'Remove Photos From Catalog'.
+After you are happy with the set of photos, you can remove the photos from the Lightroom
+catalog by selecting all the photos in the collection and then
+using the Lightroom menu item 'Remove Photos From Catalog'.
 
-Review duplicate_removal_commands.sh and execute it if you want to
-remove duplicate files.
+You can then also remove them from your hard drive by executing the `duplicate_removal_commands.sh` script.  You could also 
+change the script easily enough (e.g. in a text editor) to move the photos somehwere else, rather than deleting them. 
 
