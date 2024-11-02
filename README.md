@@ -71,7 +71,7 @@ date_sorted_directory.
 
 Install the Lightroom Plugin:
 
-Place the Lua plugin (LightroomRemoveFlagged.lrplugin) in a location
+Place the Lua plugin (PhotoCollectionCreator.lrplugin) in a location
 accessible by Lightroom.
 
 Open Adobe Lightroom Classic, go to File > Plug-in Manager, and add the
